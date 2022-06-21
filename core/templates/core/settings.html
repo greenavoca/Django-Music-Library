@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block content %}
+
+    <h1><b>@{{user.username}}</b> profile settings</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Profile image</label>
+        <img class="profimg" src="{{profile_object.profile_img.url}}" width="300" height="300">
+        <p></p>
+        <p><input type="file" name="image" value="" class="form-control" aria-label="file example"></p>
+        <p>
+        <div class="input-group">
+            <span class="input-group-text">About me</span>
+            <input class="form-control" aria-label="With textarea" name="about" value="{{profile_object.about}}">
+        </div>
+        </p>
+        <p><button type="submit" class="btn btn-success">Submit</button></p>
+    </form>
+
+{% endblock %}

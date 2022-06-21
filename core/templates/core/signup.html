@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Create an account
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <div>
+        <style>
+            h5{
+                color: red;
+            }
+        </style>
+        {% for message in messages %}
+        <h5>{{message}}</h5>
+        {% endfor %}
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p><input type="username" name="username" placeholder="Username"></p>
+        <p><input type="email" name="email" placeholder="Email"></p>
+        <p><input type="password" name="password" placeholder="Password"></p>
+        <p><input type="password" name="password2" placeholder="Confirm Password"></p>
+        <p><button type="submit" class="btn btn-success">Submit</button></p>
+    </form>
+</div>
+{% endblock %}

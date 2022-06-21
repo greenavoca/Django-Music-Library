@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Add a Music
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="text-center">
+    <h4>Add a Music</h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <p></p>
+        <input type="submit" class="btn btn-success" value="Submit">
+        <input type="submit" onclick="window.location='{% url 'music:all' %}' ; return false" class="btn btn-success" value="Cancel">
+    </form>
+</div>
+{% endblock %}

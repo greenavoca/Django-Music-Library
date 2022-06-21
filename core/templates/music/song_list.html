@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+My Music
+{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h4>My Music List</h4>
+    {% if song_count > 0 %}
+            <table class="table table-warning table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Artist</th>
+              <th scope="col">Title</th>
+              <th scope="col">Genre</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for song in music_list %}
+            <tr>
+              {% if song.owner == user %}
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{song.artist}}</td>
+              <td>{{song.title}}</td>
+              <td>{{song.genre}}</td>
+              <td><div class="btn-group">
+                      <a href="{% url 'music:music_update' song.id %}" class="btn btn-success active" aria-current="page">Update</a>
+                      <a href="{% url 'music:music_delete' song.id %}" class="btn btn-success">Delete</a>
+                  </div>
+              </td>
+              {% endif %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    <p><a class="btn btn-success" href="{% url 'music:music_create' %}" role="button">Add</a></p>
+    {% else %}
+    <p>There are no songs.</p>
+    <p><a class="btn btn-success" href="{% url 'music:music_create' %}" role="button">Add</a></p>
+    {% endif %}
+</div>
+{% endblock %}

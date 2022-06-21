@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+@{{user.username}}
+{% endblock %}
+
+{% block content %}
+<p><h4>@{{user.username}}</h4></p>
+<figure class="figure">
+  <img src="{{profile_object.profile_img.url}}" class="figure-img img-fluid rounded" alt="...">
+  <figcaption class="figure-caption text-end">link: profile/{{user.username}}</figcaption>
+</figure>
+<hr>
+<p>{{profile_object.about}}</p>
+
+{% endblock %}
